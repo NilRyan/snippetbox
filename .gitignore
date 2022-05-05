@@ -19,3 +19,5 @@ go.work
 
 # node_modules
 node_modules
+tmp
+
