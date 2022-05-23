@@ -4,17 +4,22 @@ services:
   db:
     image: mysql
     platform: linux/amd64
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
+    ports:
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_DATABASE: "snippetbox"
     volumes:
-      - my-datavolume:/var/lib/mysql
+      - db:/var/lib/mysql
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
 volumes:
-  my-datavolume:
+  db:
