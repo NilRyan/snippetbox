@@ -1,0 +1,15 @@
+@startuml C4_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_TOP_DOWN()
+
+
+Person(user, "A Snippetbox user", "A user that posts and views code snippets")
+
+Container(webApp, "Web Application", "Go 1.18.1", "A web application that allows users to post and view code snippets")
+ContainerDb(rel_db, "Relational Database", "MySQL:latest", "Stores code snippets")
+Rel(user, webApp, "Uses", "HTTPS")
+Rel_U(webApp, rel_db, "Reads from and writes data to", "SQL/JDBC, port 3306")
+
+SHOW_LEGEND()
+@enduml
